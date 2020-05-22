@@ -1,0 +1,73 @@
+1. It is mod operation, it is used for calculating the remainder
+
+2.Overloading occurs when two or more methods in one class have the same method name but different parameters.
+  Overriding means having two methods with the same method name and parameters.
+
+3.float
+
+4.int intVal = (int)objs[0];
+
+5. 20, because we actually invoke the toString() method of Integer class.
+
+6.(1)false
+(2) -1
+(3) == is used for comparing two string address in string pool, and we can also say the “==” check the reference equality. 
+compareTo() is used for comparing two strings lexicographically by using Unicode value, so we get -1 because the gap in Unicode value of first character "A" and "B" is 1.
+
+7.Because the abstract class cannot be instantiated.
+
+8.Subclass is kind of “is-a” relationship while the interface puts more attention on implementing the functionality. In this case, the Edible is more like a kind of functionality so we use interface to implement it.
+
+
+9. 
+(a)Add "throws IOException" on main method
+Class Main {
+	Public static void main(String[] args) throws IOException {
+		FileReader file = new FileReader(“data.txt”);
+		BufferedReader fileInput = new BufferedReader(file);
+
+		String inLine = fileInput.readLine();
+		while (inLine!= null) {
+			String[] numbers = inLine.split(“ “);
+			Integer a = Integer.parseInt(numbers[0]);
+			Integer b = Integer.parseInt(numbers[1]);
+			Integer c = a/b;
+			System.out.println(“result = “ + c);
+			inLine = fileInput.readLine();
+		}
+	}
+}
+
+(b) IllegalArgumentException, because b maybe equals to 0.
+
+10. The lambda expression can only access to the final variables of the enclosing scope.
+
+11.The msg is private which means it can be only accessed in the class where it is defined. TimerPrinter is an inner class of TimerMessage which means it has ability to access msg. However, TimerMessageRunner is another outer class, so it does not have ability to access private variables of TimerMessage.
+
+12.
+public class TestFrame extends JFrame {
+
+   private static final int FRAME_WIDTH = 200;
+   private static final int FRAME_HEIGHT = 75;
+   private JButton closeButton = new JButton("Close");
+   
+   public TestFrame()
+   {  
+      setSize(FRAME_WIDTH, FRAME_HEIGHT);
+	  this.setLayout(new FlowLayout);
+	  this.add(closeButton);
+	  // modify following code
+	  closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+   }
+
+	public static void main(String[] args) {
+		TestFrame testFrame = new TestFrame();
+		testFrame.setVisible(true);
+	}
+}
+
